@@ -19,7 +19,7 @@ class ItemBase(models.Model):
     image = models.ImageField(upload_to='item/%Y/%d')
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     updated_date = models.DateTimeField(auto_now=True, null=True)
-    activate = models.BooleanField(default=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.subject
