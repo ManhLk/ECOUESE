@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.forms import fields
 from courses.models import Category, Course, Lesson, Tag
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
@@ -23,6 +24,7 @@ class LessonForm(forms.ModelForm):
     content = forms.CharField(widget= CKEditorUploadingWidget)
     class Meta:
         model = Lesson
+        fields = '__all__'
 
 class LessonAdmin(admin.ModelAdmin):
     list_display = ['subject', 'created_date', 'updated_date', 'active']
