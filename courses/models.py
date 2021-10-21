@@ -1,8 +1,8 @@
-from enum import unique
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
-from django.utils.translation import activate
+from ckeditor.fields import RichTextField
+
 
 # Create your models here.
 class User(AbstractUser):
@@ -42,7 +42,7 @@ class Tag(models.Model):
         return self.name
 
 class Lesson(ItemBase):
-    content = models.TextField(null=True)
+    content = RichTextField(null=True)
     course = models.ForeignKey(Course, related_name='lessons', on_delete=CASCADE)
     tags = models.ManyToManyField(Tag, related_name='lessons', null=True)
 
