@@ -1,5 +1,7 @@
 from django.contrib import admin
 from courses.models import Category, Course, Lesson, Tag
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django import forms
 
 class CourseInline(admin.StackedInline):
     model = Course
@@ -17,8 +19,15 @@ class CourseAdmin(admin.ModelAdmin):
     list_display = ['subject', 'created_date', 'updated_date', 'active']
     inlines = [LessonInline]
 
+class LessonForm(forms.ModelForm):
+    content = forms.CharField(widget= CKEditorUploadingWidget)
+    class Meta:
+        model = Lesson
+
 class LessonAdmin(admin.ModelAdmin):
     list_display = ['subject', 'created_date', 'updated_date', 'active']
+
+    form = LessonForm
     inlines = [LessonTagInline]
 
 

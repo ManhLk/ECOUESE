@@ -126,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = f"{BASE_DIR}/core/static/image/"
-CKEDITOR_UPLOAD_PATH = ''
+CKEDITOR_UPLOAD_PATH = 'ckeditor/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
